@@ -6,7 +6,7 @@ import {
 } from "../actions/userActions.js";
 
 // const url = 'https://pokemontrainerapp.herokuapp.com/';
-const url = "https://localhost:4000/";
+const url = "https://localhost:7000/";
 
 const instance = axios.create({
   baseUrl: url,

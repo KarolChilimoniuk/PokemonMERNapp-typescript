@@ -1,4 +1,4 @@
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const Joi = require("joi");
 const { User, validation } = require("../models/user.js");
 

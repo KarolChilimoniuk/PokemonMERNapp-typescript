@@ -35,9 +35,9 @@ app.use("/loggedUser", userTrainersRoutes);
 
 //------ client build folder controller ------ //
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+// });
 
 //------Mongoose-------
 
