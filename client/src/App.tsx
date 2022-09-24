@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import { Dispatch } from "redux";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { fetchPokemonList } from "./actions/pokemonActions.js";
 import SignInUp from "./components/SignIn&Up/SignIn&Up";
 import Nav from "./components/Navigation/Navigation";
@@ -10,36 +11,36 @@ import Pokemon from "./components/Pokemon/Pokemon";
 import RegisterAndLogin from "./components/Register/Register&Login";
 import User from "./components/User/User";
 import Footer from "./components/Footer/Footer";
+import { IPokemon } from "pokeapi-typescript";
+import { IRootState } from "./services/interfaces/rootState.js";
 import "./App.css";
 
-const App = () => {
-  const loading = useSelector((state) => state.monsters.isLoading);
-  const monsterToShow = useSelector((state) => state.monsters.pokemonToDisplay);
-  const dispatch = useDispatch();
+const App = (): JSX.Element => {
+  const loading: boolean = useSelector(
+    (state: IRootState) => state.monsters.isLoading
+  );
+  const monsterToShow: IPokemon = useSelector(
+    (state: IRootState) => state.monsters.pokemonToDisplay
+  );
+  const dispatch: Dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchPokemonList());
   }, []);
 
   return (
-    <Router>
-      <div className="App">
-        <SignInUp />
-        <Nav />
-        <Switch>
-          <Route strict path={"/auth"} component={RegisterAndLogin} />
-          <Route
-            strict
-            path={"/pokeList/" + monsterToShow.name}
-            component={Pokemon}
-          />
-          <Route strict path="/pokeList" component={PokeList} />
-          <Route strict path="/loggedUser" component={User} />
-          <Route path="/" component={Home} />
-        </Switch>
-        <Footer />
-      </div>
-    </Router>
+    <div className="App">
+      <SignInUp />
+      <Nav />
+      <Routes>
+        <Route path={"/auth"} element={<RegisterAndLogin />} />
+        <Route path={"/pokeList/" + monsterToShow.name} element={<Pokemon />} />
+        <Route path="/pokeList" element={<PokeList />} />
+        <Route path="/loggedUser" element={<User />} />
+        <Route path="/" element={<Home />} />
+      </Routes>
+      <Footer />
+    </div>
   );
 };
 

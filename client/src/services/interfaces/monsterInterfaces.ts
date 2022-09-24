@@ -16,6 +16,6 @@ export interface IMonstersState {
   filteredPokemons: Array<IPokemon>;
   isLoading: boolean;
   error: boolean;
-  pokemonToDisplay: string;
+  pokemonToDisplay: IPokemon;
   pokemonFilterValue: string;
 }
