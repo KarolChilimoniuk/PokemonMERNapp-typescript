@@ -4,7 +4,6 @@ import { ThunkDispatch } from "redux-thunk";
 import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import { fetchPokemonList } from "./actions/pokemonActions.js";
-import store from "./store.js";
 import SignInUp from "./components/SignIn&Up/SignIn&Up";
 import Nav from "./components/Navigation/Navigation";
 import Home from "./components/Home/Home";
@@ -16,7 +15,6 @@ import Footer from "./components/Footer/Footer";
 import { IPokemon } from "pokeapi-typescript";
 import { IRootState } from "./services/interfaces/rootState.js";
 import "./App.css";
-import { Store } from "redux";
 
 const App = (): JSX.Element => {
   const loading: boolean = useSelector(
